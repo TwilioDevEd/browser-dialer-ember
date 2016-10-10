@@ -9,20 +9,52 @@
     href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
   <link rel="stylesheet" href="flags/flags.css">
   <link rel="stylesheet" href="dialer.css">
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="http://builds.emberjs.com/release/ember-template-compiler.js"></script>
+  <script src="http://builds.emberjs.com/release/ember.js"></script>
 </head>
 <body>
-  <section id="dialer-app"></section>
+
+  <script type="text/x-handlebars">
+    <div id="dialer">
+      {{outlet}}
+    </div>
+  </script>
+
+
+  <script type="text/x-handlebars" data-template-name="index"> 
+    <!-- Dialer input -->
+    <div class="input-group input-group-sm">
+      <!-- Create a country code dropdown -->
+      <div class="input-group-btn">
+        <button type="button" class="btn btn-default dropdown-toggle" 
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            +<span class="country-code">{{ countryCode }}</span>
+            <i class="fa fa-caret-down"></i>
+        </button>
+
+        <ul class="dropdown-menu">
+          {{#each model.countries as |country|}}
+            <li>
+              <a href="#">
+                <div class="flag flag-{{ country.code }}"></div>
+                <span>{{ country.name }} (+{{ country.cc }})</span>
+              </a>
+            </li>
+          {{/each}}
+        </ul>
+      </div>
+
+      <!-- Telephone input field -->
+      <input type="tel" class="form-control" placeholder="555-666-7777">
+    </div>
+  </script>
+
 
   <script src="//media.twiliocdn.com/sdk/js/client/v1.3/twilio.min.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  
-  <!-- 1. Load libraries -->
-  <script src="https://rawgithub.com/systemjs/systemjs/0.19.6/dist/system.js"></script>
-  <script src="https://code.angularjs.org/2.0.0-beta.0/angular2-polyfills.js"></script>
-  <script src="https://code.angularjs.org/2.0.0-beta.0/Rx.js"></script>
-  <script src="https://code.angularjs.org/2.0.0-beta.0/angular2.dev.js"></script>
-
-  <!-- 2. Load our 'modules' -->
+  <script src="dialer.js"></script>
 </body>
 </html>
