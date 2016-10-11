@@ -67,42 +67,42 @@
 
     {{#if onPhone}}
       <!-- DTMF Tone interface -->
-      <div class="keys" v-if="connection" v-cloak>
+      <div class="keys">
         <div class="key-row">
-          <button class="btn btn-circle btn-default">1</button>
-          <button class="btn btn-circle btn-default">2
+          <button class="btn btn-circle btn-default" {{action 'sendDigit' '1'}}>1</button>
+          <button class="btn btn-circle btn-default" {{action 'sendDigit' '2'}}>2
             <span>A B C</span>
           </button>
-          <button class="btn btn-circle btn-default">3
+          <button class="btn btn-circle btn-default" {{action 'sendDigit' '3'}}>3
             <span>D E F</span>
           </button>
         </div>
         <div class="key-row">
-          <button class="btn btn-circle btn-default">4
+          <button class="btn btn-circle btn-default" {{action 'sendDigit' '4'}}>4
             <span>G H I</span>
           </button>
-          <button class="btn btn-circle btn-default">5
+          <button class="btn btn-circle btn-default" {{action 'sendDigit' '5'}}>5
             <span>J K L</span>
           </button>
-          <button class="btn btn-circle btn-default">6
+          <button class="btn btn-circle btn-default" {{action 'sendDigit' '6'}}>6
             <span>M N O</span>
           </button>
         </div>
         <div class="key-row">
-          <button class="btn btn-circle btn-default">7
+          <button class="btn btn-circle btn-default" {{action 'sendDigit' '7'}}>7
             <span>P Q R S</span>
           </button>
-          <button class="btn btn-circle btn-default">8
+          <button class="btn btn-circle btn-default" {{action 'sendDigit' '8'}}>8
             <span>T U V</span>
           </button>
-          <button class="btn btn-circle btn-default">9
+          <button class="btn btn-circle btn-default" {{action 'sendDigit' '9'}}>9
             <span>W X Y Z</span>
           </button>
         </div>
         <div class="key-row">
-          <button class="btn btn-circle btn-default">*</button>
-          <button class="btn btn-circle btn-default">0</button>
-          <button class="btn btn-circle btn-default">#</button>
+          <button class="btn btn-circle btn-default" {{action 'sendDigit' '*'}}>*</button>
+          <button class="btn btn-circle btn-default" {{action 'sendDigit' '0'}}>0</button>
+          <button class="btn btn-circle btn-default" {{action 'sendDigit' '#'}}>#</button>
         </div>
       </div>
     {{/if}}

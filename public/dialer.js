@@ -48,15 +48,26 @@ App.IndexController = Ember.Controller.extend({
     ]);
   },
   actions: {
+    // Handle country code selection
     selectCountry: function(country) {
       this.set('countryCode', country.cc);
     },
+
+    // Handle muting
     toggleMute: function() {
       var muted = this.get('muted');
       this.set('muted', !muted);
 
       Twilio.Device.activeConnection().mute(!muted);
     },
+
+    // Handle numeric buttons
+    sendDigit: function(digit) {
+      Twilio.Device.activeConnection().sendDigits(digit);
+    },
+
+    // Make an outbound call with the current number,
+    // or hang up the current call
     toggleCall: function() {
       if (!this.get('onPhone')) {
         this.set('onPhone', true);
