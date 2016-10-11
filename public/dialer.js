@@ -14,6 +14,9 @@ App.IndexController = Ember.Controller.extend({
     this.set('currentNumber', '');
     this.set('muted', false);
     this.set('onPhone', false);
+    this.set('validPhone', Ember.computed('currentNumber', function() {
+      return /^([0-9]|#|\*)+$/.test(this.get('currentNumber').replace(/[-()\s]/g,''));
+    }));
 
     // Fetch Twilio capability token from our Node.js server
     $.getJSON('/token').done(function(data) {
