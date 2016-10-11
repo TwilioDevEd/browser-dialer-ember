@@ -53,12 +53,13 @@
 
     <!-- Audio Controls -->
     <div class="controls">
-      <button class="btn btn-circle btn-success" {{action 'toggleCall'}}>
-        <i class="fa fa-fw fa-phone fa-phone"></i>
+      <button class="btn btn-circle {{if onPhone 'btn-danger' 'btn-success'}}"
+          {{action 'toggleCall'}}>
+        <i class="fa fa-fw {{if onPhone 'fa-close' 'fa-phone'}}"></i>
       </button>
       {{#if onPhone}}
         <button class="btn btn-circle btn-default">
-          <i class="fa fa-fw fa-microphone"></i>
+          <i class="fa fa-fw"></i>
         </button>
       {{/if}}
     </div>
