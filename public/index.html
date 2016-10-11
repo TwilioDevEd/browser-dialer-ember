@@ -37,7 +37,7 @@
         <ul class="dropdown-menu">
           {{#each countries as |country|}}
             <li>
-              <a href="#">
+              <a href="#" {{action 'selectCountry' country}}>
                 <div class="flag flag-{{ country.code }}"></div>
                 <span>{{ country.name }} (+{{ country.cc }})</span>
               </a>
@@ -45,9 +45,10 @@
           {{/each}}
         </ul>
       </div>
+      {{ input type="hidden" value=countryCode }}
 
       <!-- Telephone input field -->
-      {{ input type="tel" class="form-control" placeholder="555-666-7777"}}
+      {{ input type="tel" value=currentNumber class="form-control" placeholder="555-666-7777"}}
     </div>
 
     <!-- Audio Controls -->

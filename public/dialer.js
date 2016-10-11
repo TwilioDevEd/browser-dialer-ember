@@ -9,6 +9,12 @@ App.IndexController = Ember.Controller.extend({
   init: function() {
     var self = this;
 
+    // Default values
+    this.set('countryCode', '1');
+    this.set('currentNumber', '');
+    this.set('muted', false);
+    this.set('onPhone', false);
+
     // Fetch Twilio capability token from our Node.js server
     $.getJSON('/token').done(function(data) {
       self.set('identity', data.identity);
@@ -23,7 +29,6 @@ App.IndexController = Ember.Controller.extend({
     // Configure event handlers for Twilio Device
     Twilio.Device.disconnect(function() {
       self.set('onPhone', false);
-      self.set('connection', null);
       self.set('log', 'Call ended.');
     });
 
@@ -43,8 +48,22 @@ App.IndexController = Ember.Controller.extend({
     ]);
   },
   actions: {
+    selectCountry: function(country) {
+      this.set('countryCode', country.cc);
+    },
     toggleCall: function() {
-      this.toggleProperty('onPhone');
+      if (!this.get('onPhone')) {
+        this.set('onPhone', true);
+        this.set('muted', false);
+
+        // make outbound call with current number
+        var n = '+' + this.get('countryCode') + this.get('currentNumber').replace(/\D/g, '');
+        Twilio.Device.connect({ number: n });
+        this.set('log', 'Calling ' + n);
+      } else {
+        // hang up call in progress
+        Twilio.Device.disconnectAll();
+      }
     }
   }
 });
