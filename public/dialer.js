@@ -1,7 +1,8 @@
 App = Ember.Application.create();
 
 App.Router.map(function() {
-  // put your routes here
+  this.route('call', { path: '/call' });
+  this.route('index', { path: '/' });
 });
 
 App.IndexRoute = Ember.Route.extend({
@@ -19,7 +20,19 @@ App.IndexRoute = Ember.Route.extend({
         { name: 'Singapore', cc: '65', code: 'sg' },
         { name: 'Spain', cc: '34', code: 'es' },
         { name: 'Brazil', cc: '55', code: 'br' },
-      ]
+      ],
+      log: 'log',
+      identity: 'identity'
+
     });
+  }
+});
+
+
+App.IndexController = Ember.Controller.extend({
+  actions: {
+    toggleCall: function() {
+      this.toggleProperty('onPhone');
+    }
   }
 });

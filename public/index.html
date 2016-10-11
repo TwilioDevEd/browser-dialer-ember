@@ -47,8 +47,67 @@
       </div>
 
       <!-- Telephone input field -->
-      <input type="tel" class="form-control" placeholder="555-666-7777">
+      {{ input type="tel" class="form-control" placeholder="555-666-7777"}}
     </div>
+
+    <!-- Audio Controls -->
+    <div class="controls">
+      <button class="btn btn-circle btn-success" {{action 'toggleCall'}}>
+        <i class="fa fa-fw fa-phone fa-phone"></i>
+      </button>
+      {{#if onPhone}}
+        <button class="btn btn-circle btn-default">
+          <i class="fa fa-fw fa-microphone"></i>
+        </button>
+      {{/if}}
+    </div>
+
+    {{#if onPhone}}
+      <!-- DTMF Tone interface -->
+      <div class="keys" v-if="connection" v-cloak>
+        <div class="key-row">
+          <button class="btn btn-circle btn-default">1</button>
+          <button class="btn btn-circle btn-default">2
+            <span>A B C</span>
+          </button>
+          <button class="btn btn-circle btn-default">3
+            <span>D E F</span>
+          </button>
+        </div>
+        <div class="key-row">
+          <button class="btn btn-circle btn-default">4
+            <span>G H I</span>
+          </button>
+          <button class="btn btn-circle btn-default">5
+            <span>J K L</span>
+          </button>
+          <button class="btn btn-circle btn-default">6
+            <span>M N O</span>
+          </button>
+        </div>
+        <div class="key-row">
+          <button class="btn btn-circle btn-default">7
+            <span>P Q R S</span>
+          </button>
+          <button class="btn btn-circle btn-default">8
+            <span>T U V</span>
+          </button>
+          <button class="btn btn-circle btn-default">9
+            <span>W X Y Z</span>
+          </button>
+        </div>
+        <div class="key-row">
+          <button class="btn btn-circle btn-default">*</button>
+          <button class="btn btn-circle btn-default">0</button>
+          <button class="btn btn-circle btn-default">#</button>
+        </div>
+      </div>
+    {{/if}}
+
+    <!-- Status logging -->
+    <div class="log">{{ model.log }}</div>
+    <p>{{ model.identity }}</p>
+
   </script>
 
 
