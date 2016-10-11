@@ -51,6 +51,12 @@ App.IndexController = Ember.Controller.extend({
     selectCountry: function(country) {
       this.set('countryCode', country.cc);
     },
+    toggleMute: function() {
+      var muted = this.get('muted');
+      this.set('muted', !muted);
+
+      Twilio.Device.activeConnection().mute(!muted);
+    },
     toggleCall: function() {
       if (!this.get('onPhone')) {
         this.set('onPhone', true);
