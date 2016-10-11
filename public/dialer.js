@@ -17,6 +17,9 @@ App.IndexController = Ember.Controller.extend({
     this.set('validPhone', Ember.computed('currentNumber', function() {
       return /^([0-9]|#|\*)+$/.test(this.get('currentNumber').replace(/[-()\s]/g,''));
     }));
+    this.set('fullNumber', Ember.computed('countryCode', 'currentNumber', function() {
+      return '+' + this.get('countryCode') + this.get('currentNumber').replace(/\D/g, '');
+    }));
 
     // Fetch Twilio capability token from our Node.js server
     $.getJSON('/token').done(function(data) {
@@ -32,7 +35,7 @@ App.IndexController = Ember.Controller.extend({
     // Configure event handlers for Twilio Device
     Twilio.Device.disconnect(function() {
       self.set('onPhone', false);
-      self.set('log', 'Call ended.');
+      self.set('logtext', 'Call ended.');
     });
 
     // Set countries
@@ -77,9 +80,9 @@ App.IndexController = Ember.Controller.extend({
         this.set('muted', false);
 
         // make outbound call with current number
-        var n = '+' + this.get('countryCode') + this.get('currentNumber').replace(/\D/g, '');
+        var n = this.get('fullNumber');
         Twilio.Device.connect({ number: n });
-        this.set('log', 'Calling ' + n);
+        this.set('logtext', 'Calling ' + n);
       } else {
         // hang up call in progress
         Twilio.Device.disconnectAll();
