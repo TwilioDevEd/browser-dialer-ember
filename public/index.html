@@ -35,7 +35,7 @@
         </button>
 
         <ul class="dropdown-menu">
-          {{#each model.countries as |country|}}
+          {{#each countries as |country|}}
             <li>
               <a href="#">
                 <div class="flag flag-{{ country.code }}"></div>
@@ -105,8 +105,8 @@
     {{/if}}
 
     <!-- Status logging -->
-    <div class="log">{{ model.log }}</div>
-    <p>{{ model.identity }}</p>
+    <div class="log">{{ logtext }}</div>
+    <p>{{ identity }}</p>
 
   </script>
 
