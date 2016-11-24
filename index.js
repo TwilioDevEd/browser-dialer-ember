@@ -1,4 +1,6 @@
 'use strict';
+// load env variables in .env file
+require('dotenv-safe').load();
 
 const http = require('http');
 const express = require('express');
