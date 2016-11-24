@@ -18,7 +18,7 @@
 
 1. First clone this repository and `cd` into it.
 
-   ```
+   ```bash
    $ git clone git@github.com:TwilioDevEd/browser-dialer-ember.git
    $ cd browser-dialer-ember
    ```
