@@ -23,10 +23,7 @@ App.IndexController = Ember.Controller.extend({
 
     // Fetch Twilio capability token from our Node.js server
     $.getJSON('/token').done(function(data) {
-      self.set('identity', data.identity);
       Twilio.Device.setup(data.token);
-      self.set('logtext', 'Connected with generated client name "'+ self.identity + '"');
-      console.log('Connected with generated client name "'+ self.identity + '"');
     }).fail(function(err) {
       console.log(err);
       self.set('logtext', 'Could not fetch token, see console.log');
