@@ -27,11 +27,12 @@ App.IndexController = Ember.Controller.extend({
     }).fail(function(err) {
       console.log(err);
       self.set('logtext', 'Could not fetch token, see console.log');
-    })
+    });
 
     Twilio.Device.ready(function() {
       self.set('logtext', 'Browser dialer is ready..')
-    })
+    });
+
     // Configure event handlers for Twilio Device
     Twilio.Device.disconnect(function() {
       self.set('onPhone', false);
