@@ -1,0 +1,6 @@
+{
+    "title": "Browser Dialer with Twilio and Ember.js",
+    "repo": "TwilioDevEd/browser-dialer-ember",
+    "description": "Learn to implement a browser dialer application using the Twilio.js library and Ember.js",
+    "heroku": false
+}
