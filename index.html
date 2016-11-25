@@ -93,7 +93,7 @@ looking for instructions on how to handle the call.</p>
 <ul>
 <li><a href="//www.twilio.com/docs/api/client/device#connect">Twilio.Device.connect</a></li>
 </ul>
-</div><div data-title="Mute and Unmute an Active Call" data-file="public/dialer.js" data-highlight="63-69" class="step"><h2 id="mute-and-unmute-an-active-call">Mute and Unmute an Active Call</h2>
+</div><div data-title="Mute and Unmute an Active Call" data-file="public/dialer.js" data-highlight="63-70" class="step"><h2 id="mute-and-unmute-an-active-call">Mute and Unmute an Active Call</h2>
 <p>Sometimes you want to mute or unmute the current call, halting input
 from the user&#39;s microphone.</p>
 <p>We can use <code>Twilio.Device.activeConnection()</code> to get the active call,
@@ -104,7 +104,7 @@ and then call its <code>mute()</code> method to mute or unmute the user&#39;s mi
 <li><a href="//www.twilio.com/docs/api/client/device#activeconnection">Twilio.Device.activeConnection</a></li>
 <li><a href="//www.twilio.com/docs/api/client/connection#mute">Twilio.Connection.mute</a></li>
 </ul>
-</div><div data-title="Send DTMF Tones" data-file="public/dialer.js" data-highlight="71-74" class="step"><h2 id="send-dtmf-tones">Send DTMF Tones</h2>
+</div><div data-title="Send DTMF Tones" data-file="public/dialer.js" data-highlight="72-75" class="step"><h2 id="send-dtmf-tones">Send DTMF Tones</h2>
 <p>If our user calls an automated phone system, they might need to navigate
 a menu system using our phone&#39;s keypad and DTMF tones.</p>
 <p>DTMF stands for &quot;Dual-tone multi-frequency signaling&quot; and are the familiar
@@ -119,7 +119,7 @@ argument.</p>
 <li><a href="//www.twilio.com/docs/api/client/connection#sendDigits">Twilio.Connection.sendDigits</a></li>
 <li><a href="//en.wikipedia.org/wiki/Interactive_voice_response">Interactive Voice Response</a></li>
 </ul>
-</div><div data-title="Hang up the Call" data-file="public/dialer.js" data-highlight="78-91" class="step"><h2 id="hang-up-the-call">Hang up the Call</h2>
+</div><div data-title="Hang up the Call" data-file="public/dialer.js" data-highlight="77-92" class="step"><h2 id="hang-up-the-call">Hang up the Call</h2>
 <p>Lastly, our users should be able to end a call.</p>
 <p>To achive this we use <code>Twilio.Device.disconnectAll</code>, which terminates the
 current call.</p>
