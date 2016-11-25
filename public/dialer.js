@@ -23,14 +23,15 @@ App.IndexController = Ember.Controller.extend({
 
     // Fetch Twilio capability token from our Node.js server
     $.getJSON('/token').done(function(data) {
-      self.set('identity', data.identity);
       Twilio.Device.setup(data.token);
-      self.set('logtext', 'Connected with generated client name "'+ self.identity + '"');
-      console.log('Connected with generated client name "'+ self.identity + '"');
     }).fail(function(err) {
       console.log(err);
       self.set('logtext', 'Could not fetch token, see console.log');
-    })
+    });
+
+    Twilio.Device.ready(function() {
+      self.set('logtext', 'Browser dialer is ready..')
+    });
 
     // Configure event handlers for Twilio Device
     Twilio.Device.disconnect(function() {
@@ -41,16 +42,17 @@ App.IndexController = Ember.Controller.extend({
     // Set countries
     this.set('countries', [
       { name: 'United States', cc: '1', code: 'us' },
-      { name: 'Great Britain', cc: '44', code: 'gb' },
+      { name: 'Brazil', cc: '55', code: 'br' },
       { name: 'Colombia', cc: '57', code: 'co' },
       { name: 'Ecuador', cc: '593', code: 'ec' },
       { name: 'Estonia', cc: '372', code: 'ee' },
       { name: 'Germany', cc: '49', code: 'de' },
+      { name: 'Great Britain', cc: '44', code: 'gb' },
       { name: 'Hong Kong', cc: '852', code: 'hk' },
       { name: 'Ireland', cc: '353', code: 'ie' },
+      { name: 'Mexico', cc: '52', code: 'mx' },
       { name: 'Singapore', cc: '65', code: 'sg' },
       { name: 'Spain', cc: '34', code: 'es' },
-      { name: 'Brazil', cc: '55', code: 'br' },
     ]);
   },
   actions: {
