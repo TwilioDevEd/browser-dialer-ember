@@ -19,36 +19,36 @@
 1. First clone this repository and `cd` into it.
 
    ```bash
-   $ git clone git@github.com:TwilioDevEd/browser-dialer-ember.git
-   $ cd browser-dialer-ember
+   git clone git@github.com:TwilioDevEd/browser-dialer-ember.git
+   cd browser-dialer-ember
    ```
 
 1. Copy the sample configuration file and edit it to match your configuration.
 
   ```bash
-  $ cp .env.example .env
+  cp .env.example .env
   ```
 
  You can find your `TWILIO_ACCOUNT_SID` and `TWILIO_AUTH_TOKEN` in your
- [Twilio Account Settings](https://www.twilio.com/user/account/settings).
- You will also need a `TWILIO_NUMBER`, which you may find [here](https://www.twilio.com/user/account/phone-numbers/incoming), and you may find your `TWILIO_TWIML_APP_SID` [here](https://www.twilio.com/console/voice/dev-tools/twiml-apps).
+ [Twilio Console](https://www.twilio.com/console).
+ You will also need a `TWILIO_NUMBER`, which you may find [here](https://www.twilio.com/console/phone-numbers/incoming), and you may find your `TWILIO_TWIML_APP_SID` [here](https://www.twilio.com/console/voice/dev-tools/twiml-apps).
 
 1. Install dependencies.
 
   ```bash
-  $ npm install
+  npm install
   ```
 
 1. Run the application.
 
   ```bash
-  $ npm start
+  npm start
   ```
 
 1. Expose the application to the wider Internet using [ngrok](https://ngrok.com/).
 
    ```bash
-   $ ngrok http 3000
+   ngrok http 3000
    ```
 
    Once you have started ngrok, update your App voice URL
